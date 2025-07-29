@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Curricular Interactiva</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>Malla Curricular de Ingeniería y Ciencias</h1>
+    </header>
 
+    <main class="curriculum-container">
+        <section class="semester" id="semester-1">
+            <h2>Semestre 1</h2>
+            <div class="course-list">
+                <div class="course" data-name="Aplicaciones de la Biología a la Ingeniería y Ciencias">Aplicaciones de la Biología a la Ingeniería y Ciencias</div>
+                <div class="course" data-name="Desafíos de Innovación en Ingeniería y Ciencias">Desafíos de Innovación en Ingeniería y Ciencias</div>
+                <div class="course" data-name="Introducción al Álgebra">Introducción al Álgebra</div>
+                <div class="course" data-name="Introducción al Cálculo">Introducción al Cálculo</div>
+                <div class="course" data-name="Introducción a la Física Clásica">Introducción a la Física Clásica</div>
+                <div class="course" data-name="Herramientas Computacionales para Ingeniería y Ciencias">Herramientas Computacionales para Ingeniería y Ciencias</div>
+            </div>
+        </section>
+
+        <section class="semester" id="semester-2">
+            <h2>Semestre 2</h2>
+            <div class="course-list">
+                <div class="course" data-name="Algebra Lineal">Algebra Lineal</div>
+                <div class="course" data-name="Cálculo Diferencial e Integral">Cálculo Diferencial e Integral</div>
+                <div class="course" data-name="Introducción a la Física Moderna">Introducción a la Física Moderna</div>
+                <div class="course" data-name="Proyecto de Innovación en Ingeniería y Ciencias">Proyecto de Innovación en Ingeniería y Ciencias</div>
+                <div class="course" data-name="Introducción a la Programación">Introducción a la Programación</div>
+                <div class="course" data-name="Electivo de Formación Integral:(FG/EH/EI/DR/FT)">Electivo de Formación Integral:(FG/EH/EI/DR/FT)</div>
+            </div>
+        </section>
+
+        <section class="semester" id="semester-3">
+            <h2>Semestre 3</h2>
+            <div class="course-list">
+                <div class="course" data-name="Cálculo en Varias Variables">Cálculo en Varias Variables</div>
+                <div class="course" data-name="Ecuaciones Diferenciales Ordinarias">Ecuaciones Diferenciales Ordinarias</div>
+                <div class="course" data-name="Mecánica">Mecánica</div>
+                <div class="course" data-name="Métodos Experimentales">Métodos Experimentales</div>
+                <div class="course" data-name="Química">Química</div>
+            </div>
+        </section>
+
+        <section class="semester" id="semester-4">
+            <h2>Semestre 4</h2>
+            <div class="course-list">
+                <div class="course" data-name="Economía">Economía</div>
+                <div class="course" data-name="Cálculo Avanzado y Aplicaciones">Cálculo Avanzado y Aplicaciones</div>
+                <div class="course" data-name="Electromagnetismo">Electromagnetismo</div>
+                <div class="course" data-name="Módulo Interdisciplinario">Módulo Interdisciplinario</div>
+                <div class="course" data-name="Termodinámica Química">Termodinámica Química</div>
+                <div class="course" data-name="Electivo de Formación Integral:(FG/EH/EI/DR/FT)">Electivo de Formación Integral:(FG/EH/EI/DR/FT)</div>
+            </div>
+        </section>
+    </main>
+
+    <div id="notification-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="notification-message"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
