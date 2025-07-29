@@ -1,1 +1,301 @@
+/* Importar fuente de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
+/* Variables CSS para la paleta de colores */
+:root {
+    --olive-darkest: #4B5320; /* Un verde oliva muy oscuro */
+    --olive-dark: #6B8E23;    /* Verde oliva oscuro */
+    --olive-medium: #808000;  /* Verde oliva estándar */
+    --olive-light: #AAB750;   /* Verde oliva claro */
+    --olive-lightest: #DDEEE0; /* Un verde muy pálido, casi blanco para fondos */
+    --text-color: #333;
+    --text-color-light: #f8f8f8;
+    --border-color: #ced4da;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--olive-lightest); /* Fondo claro */
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative; /* Para las hojas decorativas */
+    overflow-x: hidden; /* Evitar scroll horizontal */
+}
+
+/* Decoración con hojas */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    width: 100px; /* Tamaño de la hoja */
+    height: 100px; /* Tamaño de la hoja */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%236B8E23"><path d="M17.41 6.59c-.39-.39-1.02-.39-1.41 0L12 10.59 7.41 6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 6 16.59c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.59 4.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.59-4.59c.39-.39.39-1.02 0-1.41z" transform="scale(0.7) rotate(45 12 12) translate(4 0)"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.1; /* Ligera transparencia */
+    z-index: -1; /* Detrás del contenido */
+}
+
+body::before {
+    top: 50px;
+    left: -30px;
+    transform: rotate(20deg);
+}
+
+body::after {
+    bottom: 50px;
+    right: -30px;
+    transform: rotate(160deg);
+}
+
+
+/* Encabezado */
+.header {
+    background-color: var(--olive-darkest); /* Verde oliva muy oscuro */
+    color: var(--text-color-light);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px var(--box-shadow);
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 2.5em;
+    letter-spacing: 1.5px;
+}
+
+/* Contenedor principal de la malla */
+.curriculum-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los semestres se envuelvan en pantallas pequeñas */
+    justify-content: center;
+    gap: 25px; /* Espacio entre los semestres */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1; /* Permite que el contenedor crezca y ocupe el espacio disponible */
+}
+
+/* Estilos para cada semestre */
+.semester {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--box-shadow);
+    padding: 25px;
+    flex: 1; /* Permite que cada semestre crezca */
+    min-width: 280px; /* Ancho mínimo para cada columna */
+    max-width: 350px; /* Ancho máximo para cada columna */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.semester:hover {
+    transform: translateY(-5px); /* Efecto hover sutil */
+}
+
+.semester h2 {
+    color: var(--olive-dark); /* Verde oliva oscuro para los títulos de semestre */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--olive-light);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* Lista de ramos dentro de cada semestre */
+.course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espacio entre los ramos */
+}
+
+/* Estilos para cada ramo */
+.course {
+    background-color: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.05em;
+    font-weight: 400;
+    color: var(--text-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    word-wrap: break-word; /* Asegura que el texto largo se ajuste */
+}
+
+.course:hover:not(.approved):not(.blocked) {
+    background-color: var(--olive-lightest);
+    border-color: var(--olive-medium);
+    transform: translateY(-2px);
+}
+
+/* Estilo para ramo aprobado */
+.course.approved {
+    background-color: var(--olive-medium); /* Verde oliva estándar */
+    color: var(--text-color-light);
+    text-decoration: line-through;
+    cursor: default;
+    border-color: var(--olive-dark);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para ramo bloqueado */
+.course.blocked {
+    background-color: #f8d7da; /* Rojo pálido para indicar bloqueo */
+    color: #721c24; /* Texto oscuro para el rojo pálido */
+    cursor: not-allowed;
+    border-color: #dc3545;
+    opacity: 0.7;
+}
+
+/* Modal de notificación */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija en la pantalla */
+    z-index: 1000; /* Por encima de todo lo demás */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Habilitar scroll si el contenido es muy grande */
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    animation: fadeIn 0.3s ease-out;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.modal-content p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+}
+
+/* Animación para el modal */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 992px) {
+    .curriculum-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .semester {
+        max-width: 90%; /* Ocupa más ancho en pantallas medianas */
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 0;
+    }
+
+    .header h1 {
+        font-size: 1.8em;
+    }
+
+    .curriculum-container {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .semester {
+        min-width: unset;
+        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+        padding: 20px;
+    }
+
+    .semester h2 {
+        font-size: 1.5em;
+    }
+
+    .course {
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+
+    .modal-content {
+        padding: 20px;
+        width: 85%;
+    }
+
+    .close-button {
+        font-size: 24px;
+        top: 8px;
+        right: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .semester {
+        padding: 15px;
+    }
+
+    .semester h2 {
+        font-size: 1.3em;
+    }
+
+    .course {
+        font-size: 0.9em;
+        padding: 10px 12px;
+    }
+
+    body::before,
+    body::after {
+        width: 70px;
+        height: 70px;
+    }
+}
